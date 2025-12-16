@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JAXL Publicidad - Renta de Pantallas Digitales</title>
+
+	<style>
+		/* ========================================= */
+		/* ESTILOS GLOBALES Y BÁSICOS */
+		/* ========================================= */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background-color: #f4f4f4;
+		}
+
+		a {
+			text-decoration: none;
+			color: #007bff;
+			text-align: center;
+		}
+
+		section {
+			padding: 60px 5%;
+			text-align: center;
+		}
+
+		/* --- NAVEGACIÓN (HEADER) --- */
+		.menu-wave-fiel {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			height: 70px;
+			background: #2D4796;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.menu-content {
+			height: 70px;
+			padding: 0 3%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.logo {
+			font-size: 1.6em;
+			font-weight: 700;
+			color: white;
+		}
+
+		.logo span {
+			color: #8cceff;
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+		}
+
+		nav ul li {
+			margin-left: 28px;
+		}
+
+		nav ul li a {
+			color: white;
+			font-weight: 600;
+			transition: color 0.3s;
+		}
+
+		/* --- CONTENIDO PRINCIPAL (TWO-COLUMNS LAYOUT) --- */
+
+		.contenido-pagina-fiel {
+			background-color: #f4f4f4;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			min-height: calc(100vh - 70px - 200px);
+		}
+
+		/* Contenedor de las dos columnas */
+		.contenedor-dos-columnas {
+			max-width: 1200px; /* Ancho máximo para el contenido centrado */
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+			gap: 40px; /* Espacio entre columnas */
+			align-items: start; /* Alinear arriba el contenido de las columnas */
+			text-align: left;
+			padding: 0 20px;
+		}
+
+		/* Columna de la Izquierda (Para la Imagen) */
+		.columna-izquierda {
+			padding-top: 50px; /* Un poco de padding para alinear con el texto */
+		}
+
+		.columna-izquierda img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 8px; /* Opcional: para un mejor look */
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+
+		.card-fiel-imagen {
+			text-align: left;
+			padding: 30px 40px;
+			background-color: #ffffff;
+			border-radius: 4px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.card-fiel-imagen h3 {
+			color: #2D4796;
+			margin-bottom: 25px;
+			font-size: 1.8em;
+			font-weight: 600;
+			text-align: left;
+		}
+
+		.card-fiel-imagen p {
+			margin-bottom: 15px;
+		}
+
+		.lista-servicios-fiel {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 20px;
+		}
+
+		.lista-servicios-fiel li {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 15px;
+		}
+
+		/* Icono SVG de palomita */
+		.lista-servicios-fiel li::before {
+			content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+			margin-right: 15px;
+			flex-shrink: 0;
+		}
+
+		.lista-servicios-fiel li p {
+			margin: 0;
+		}
+
+		/* --- PIE DE PÁGINA (Footer) --- */
+		footer {
+			background-color: #2D4796;
+			color: white;
+			padding: 40px 5%;
+			text-align: center;
+		}
+
+		.contacto-info {
+			margin-bottom: 20px;
+		}
+
+		.contacto-info h3 {
+			margin-bottom: 15px;
+			color: #007bff;
+		}
+
+		.contacto-info p a {
+			color: #8cceff;
+		}
+
+		.copyright {
+			font-size: 0.9em;
+			color: #ccc;
+		}
+
+		/* --- MEDIA QUERY para Móviles --- */
+		@media (max-width: 768px) {
+			.contenedor-dos-columnas {
+				grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+			}
+			.columna-izquierda {
+				padding-top: 0; /* Eliminar padding extra en móviles */
+				order: 2; /* Opcional: Mover la imagen debajo del texto en móviles */
+			}
+			.columna-derecha {
+				order: 1; /* Mover el texto arriba en móviles */
+			}
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header class="menu-wave-fiel">
+		<div class="menu-content">
+			<div class="logo">JAXL <span>PUBLICIDAD</span></div>
+			<nav>
+				<ul>
+					<li><a href="index.html#inicio">Inicio</a></li>
+					<li><a href="index.html#servicios">Servicios</a></li>
+					<li><a href="index.html#nosotros">Nosotros</a></li>
+					<li><a href="index.html#contacto">Contacto</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section id="detalles" class="contenido-pagina-fiel">
+
+		<div class="contenedor-dos-columnas">
+
+			<div class="columna-izquierda">
+				<img src="espec.png" alt="Imagen de una pantalla digital de publicidad exterior de JAXL Publicidad">
+			</div>
+
+			<div class="columna-derecha">
+				<div class="card-fiel-imagen">
+
+					<h3>Renta de Pantallas Digitales</h3>
+
+					<p>Lleva tu mensaje al siguiente nivel con nuestras pantallas digitales de alta calidad. Garantizamos impacto visual en ubicaciones de alto tráfico.</p>
+
+					<p>Nuestra oferta incluye:</p>
+
+					<ul class="lista-servicios-fiel">
+						<li>
+							<p><strong>Ubicaciones Estratégicas:</strong> Máximo alcance y visibilidad en puntos clave de la ciudad.</p>
+						</li>
+						<li>
+							<p><strong>Spot de 10 Segundos:</strong> Mensajes dinámicos y efectivos para captar la atención.</p>
+						</li>
+						<li>
+							<p><strong>Ubicación en Avenidas Principales:</strong> Cobertura garantizada en las arterias viales más importantes.</p>
+						</li>
+						<li>
+							<p><strong>Exhibición de Calidad:</strong> Tecnología LED de última generación para una imagen nítida.</p>
+						</li>
+					</ul>
+
+					<p>¡Consulta la disponibilidad y comienza a anunciar hoy!</p>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+	<footer id="contacto">
+		<div class="contacto-info">
+			<h3>Contáctanos</h3>
+			<p><strong>Teléfono:</strong> (442) 3912959</p>
+			<p><strong>Celular:</strong> (442) 3912959</p>
+			<p><strong>Email:</strong> <a href="mailto:javier.axl@hotmail.com">javier.axl@hotmail.com</a></p>
+			<p><strong>Síguenos:</strong> <a href="https://www.facebook.com/JAXLPublicidad" target="_blank">f JAXL Publicidad</a></p>
+		</div>
+		<p class="copyright">&copy; 2025 JAXL Publicidad. Todos los derechos reservados.</p>
+	</footer>
+
+</body>
+</html>

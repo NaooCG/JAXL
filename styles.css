@@ -1,0 +1,319 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; 
+}
+
+a {
+    text-decoration: none;
+    color: #047dff;
+    text-align: center;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    color: #1a1a1a;
+}
+
+
+.hero {
+    background-color: #2D4796;  
+    color: white;
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    max-width: 700px;
+}
+
+.btn-principal {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.btn-principal:hover {
+    background-color: #0056b3;
+}
+
+/*SERVICIOS*/
+#servicios {
+    background-color: #e9ecef;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*Tarjeta Interactiva*/
+.servicio-card {
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+    background: transparent;
+}
+
+/*caras 3D*/
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+    background-color: #fff;
+    color: #333;
+    transform: rotateY(0deg);
+}
+
+.card-back {
+    background-color: #007bff;
+    color: white;
+    transform: rotateY(180deg); 
+}
+
+/* Rota tarjeta */
+.servicio-card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.servicio-card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+.tip-didactico {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.servicio-card:hover .tip-didactico {
+    display: none; 
+}
+
+/*NOSOTROS */
+#nosotros {
+    background-color: #e9ecef;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.8; /* espacio entre líneas */
+    white-space: pre-line; /* respeta saltos de línea (\n) del HTML */
+}
+
+.about-text p {
+    margin-bottom: 0.9em;
+}
+
+/*CONTACT*/
+footer {
+    background-color: #2D4796;
+    color: white;
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.contacto-info {
+    margin-bottom: 20px;
+}
+
+.contacto-info h3 {
+    margin-bottom: 15px;
+    color: #59baff
+;
+}
+
+.contacto-info p a {
+    color: #47cbff;
+}
+
+.copyright {
+    font-size: 0.9em;
+    color: #ccc;
+}
+/* ANUNCIOS ESPECTACULARES SECTION */
+.anuncios-section {
+    background: linear-gradient(135deg, #1a3a8f 0%, #2d4796 100%);
+    padding: 60px 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.anuncios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.anuncios-text {
+    text-align: center;
+    position: relative;
+    padding: 40px 20px;
+}
+
+.anuncios-label {
+    display: block;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.anuncios-title {
+    color: #ff0000;
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 
+        -2px -2px 0 #fff,  
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        2px 2px 0 #fff,
+        3px 3px 5px rgba(0, 0, 0, 0.5);
+    transform: rotate(-2deg);
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+}
+
+.anuncios-subtitle {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.anuncios-subtitle span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.renta, .instalacion {
+    background-color: white;
+    color: #ff0000;
+}
+
+.impresion {
+    background-color: #ff0000;
+    color: white;
+}
+
+/* Menú flotante */
+/*NAVEGACIÓN*/
+
+.menu-wave {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 130px;
+
+    /* Fondo con ola */
+    background: 
+        url("data:image/svg+xml;utf8,\
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'>\
+        <path fill='%232d4796' d='M0,40 C240,80 480,0 720,20 960,40 1200,80 1440,30 L1440,0 L0,0 Z'/>\
+        </svg>") no-repeat bottom,
+        linear-gradient(180deg, #1a3987, #2D4796);
+
+    background-size: cover;
+}
+/* Contenido del menú */
+.menu-content {
+    height: 130px;
+    padding: 0 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Logo */
+.logo {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: white;
+}
+
+.logo span {
+    color: #47cbff;
+}
+
+/* Navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 28px;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #8cceff;
+}
