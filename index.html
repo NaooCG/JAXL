@@ -4,28 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAXL Publicidad - Agencia de Medios y Publicidad Espectacular</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4; 
+        }
+
+        a {
+            text-decoration: none;
+            color: #62c0ff;
+            text-align: center;
+        }
+
+        section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            color: #1a1a1a;
+        }
+
+        .hero {
+            background-color: #2D4796;  
+            color: white;
+            padding: 30px 5% 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin: 0 0 15px;
+        }
+
+        .btn-principal {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        /* SERVICIOS */
+        #servicios {
+            background-color: #e9ecef;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servicio-card {
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+            background: transparent;
+            display: block;
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-front {
+            background-color: #fff;
+            color: #333;
+            transform: rotateY(0deg);
+        }
+
+        .card-back {
+            background-color: #007bff;
+            color: white;
+            transform: rotateY(180deg); 
+        }
+
+        .servicio-card:hover .card-front {
+            transform: rotateY(-180deg);
+        }
+
+        .servicio-card:hover .card-back {
+            transform: rotateY(0deg);
+        }
+
+        .tip-didactico {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        /* NAVEGACIÓN */
+        .menu-wave {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 130px;
+            background: 
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%232d4796' d='M0,40 C240,80 480,0 720,20 960,40 1200,80 1440,30 L1440,0 L0,0 Z'/></svg>") no-repeat bottom,
+                linear-gradient(180deg, #1a3987, #2D4796);
+            background-size: cover;
+        }
+
+        .menu-content {
+            height: 100px;
+            padding: 0 3%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo + Texto en el Menú */
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo span { color: #47cbff; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li { margin-left: 28px; }
+
+        nav ul li a {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* NOSOTROS */
+        #nosotros {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .nosotros-logo img {
+            width: 600px;
+            height: auto;
+        }
+
+        .about-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: 'Times New Roman', Times, serif; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;       
+            line-height: 1.8;         
+            color: #444;               
+            text-align: center;
+        }
+
+        .about-text p {
+            margin-bottom: 40px;       
+            font-size: 1.05em;
+        }
+
+        footer {
+            background-color: #2D4796;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+        .hero-logo {
+            width: 630px;
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+
+        .contacto-info h3 { color: #59baff; }
+
+        /* MÓVIL */
+        .menu-toggle { display: none; }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                gap: 5px;
+            }
+
+            .menu-icon span {
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                border-radius: 2px;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #2D4796;
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                margin: 0;
+            }
+
+            nav ul li a { padding: 20px; display: block; }
+
+            .menu-toggle:checked ~ nav ul { max-height: 400px; }
+
+            .hero h1 { font-size: 1.8em; }
+            h2 { font-size: 1.6em; }
+
+            .logo { font-size: 1.2em; }
+            .logo img { height: 45px; }
+
+            #nosotros {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nosotros-logo img { width: 220px; margin-bottom: 20px; }
+            .servicios-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
     <header class="menu-wave">
-    <div class="menu-content">
-        <div class="logo">JAXL <span>PUBLICIDAD</span></div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+        <div class="menu-content">
+            <div class="logo">
+                <img src="jaxl.png" alt="Logo"> 
+                JAXL <span>PUBLICIDAD</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <section id="inicio" class="hero">
+        <img src="jaxl.png" alt="JAXL Logo" class="hero-logo">
         <h1>PUBLICIDAD ESPECTACULAR Y DE ALTURA</h1>
-        
         <a href="#servicios" class="btn-principal">Ver Nuestros Servicios</a>
     </section>
 
@@ -40,7 +324,7 @@
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
-                    <p>Ofrecemos renta, impresión e instalación de espectaculares. Contamos con la infraestructura para la fabricación y mantenimiento de anuncios.</p>
+                    <p>Ofrecemos renta, impresión e instalación de espectaculares. Contamos con infraestructura para fabricación.</p>
                 </div>
             </a>
 
@@ -51,59 +335,76 @@
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
-                    <p>Garantizamos exhibición de calidad en ubicaciones estratégicas. Tu anuncio se transmite en spots de 10 segundos.</p>
+                    <p>Garantizamos exhibición de calidad en ubicaciones estratégicas.</p>
                 </div>
             </a>
 
-            <div class="servicio-card">
+            <a href="vallas_moviles.html" class="servicio-card">
                 <div class="card-front">
                     <h3>Vallas Móviles</h3>
-                    <p>Llegue al público con recorridos segmentados (6 a 8 horas diarias).</p>
+                    <p>Llegue al público con recorridos segmentados.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
-                    <p>Disponibles para renta, fabricación y renovación. Ofrecemos recorridos segmentados de 6 a 8 horas de exhibición.</p>
+                    <p>Disponibles para renta y fabricación (6 a 8 horas diarias).</p>
                 </div>
-            </div>
-            
-            <div class="servicio-card">
+            </a>
+
+            <a href="fabricacion_estructuras.html" class="servicio-card">
                 <div class="card-front">
                     <h3>Fabricación de Estructuras</h3>
                     <p>Unipolares, Tótemes, Carteleras y Estructuras Metálicas.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
-                    <p>Especializados en la fabricación de estructuras para publicidad, incluyendo bastidores, tapiales y rebases 3D para anuncios.</p>
+                    <p>Especializados en la fabricación de estructuras para publicidad, incluyendo bastidores y rebases 3D para anuncios.</p>
                 </div>
-            </div>
-            
-            </div>
+            </a>
+
+            <a href="tapiales.html" class="servicio-card">
+                <div class="card-front">
+                    <h3>Tapiales Publicitarios</h3>
+                    <p>Soluciones para cercado de obras con impacto visual.</p>
+                    <span class="tip-didactico">¡MIRA DENTRO!</span>
+                </div>
+                <div class="card-back">
+                    <p>Ofrecemos fabricación, impresión, instalación y mantenimiento de tapiales para proyectos de construcción y eventos.</p>
+                </div>
+            </a>
+
+            <a href="3d_luminosos_impresiones.html" class="servicio-card">
+                <div class="card-front">
+                    <h3>Letras 3D, Cajones Luminosos e Impresiones</h3>
+                    <p>Realce su marca con anuncios 3D, iluminación LED e impresiones de alta calidad.</p>
+                    <span class="tip-didactico">¡MIRA DENTRO!</span>
+                </div>
+                <div class="card-back">
+                    <p>Fabricamos letras 3D en diversos materiales, cajas de luz y ofrecemos servicios de impresión en gran formato para interiores y exteriores.</p>
+                </div>
+            </a>
+                    
+        </div>
     </section>
 
     <section id="nosotros">
-        <h2>¿Quiénes Somos?</h2>
-        <p class="about-text">
-            SOMOS UNA EMPRESA QUERETANA ESPECIALIZADA EN
-            PUBLICIDAD ESPECTACULAR Y DE ALTURA.
+        <div class="nosotros-logo">
+            <img src="jaxl.png" alt="JAXL Publicidad Logo">
+        </div>
+        <div class="about-text">
+            <h2>¿Quiénes Somos?</h2>
+            <p> SOMOS UNA EMPRESA QUERETANA ESPECIALIZADA EN PUBLICIDAD ESPECTACULAR Y DE ALTURA.</p>
 
-            CONTAMOS CON UNA AMPLIA INFRAESTRUCTURA QUE
-                INCLUYE RENTA DE ESPECTACULARES, PANTALLAS DIGITALES,
-            IMPRESIÓN DE GRAN FORMATO, VALLAS MÓVILES,
-            FABRICACIÓN DE ESTRUCTURAS METÁLICAS, UNIPOLARES Y
-            TÓTEMS PUBLICITARIOS, ENTRE OTROS.
-            NUESTRO OBJETIVO ES PONER A SU DISPOSICIÓN TODOS
-            NUESTROS RECURSOS Y EXPERIENCIA PARA BRINDAR
-            SOLUCIONES INTEGRALES EN PUBLICIDAD EXTERIOR,
-            IMPULSANDO EL POSICIONAMIENTO Y LA VISIBILIDAD DE SU
-            MARCA TAL COMO USTED LO REQUIERE
-        </p>
+            <p> CONTAMOS CON UNA AMPLIA INFRAESTRUCTURA QUE INCLUYE RENTA DE ESPECTACULARES, PANTALLAS DIGITALES, IMPRESIÓN DE GRAN FORMATO, VALLAS MÓVILES, FABRICACIÓN DE ESTRUCTURAS METÁLICAS, UNIPOLARES Y TÓTEMS PUBLICITARIOS, ENTRE OTROS.</p>
+                
+            <p> NUESTRO OBJETIVO ES PONER A SU DISPOSICIÓN TODOS NUESTROS RECURSOS Y EXPERIENCIA PARA BRINDAR SOLUCIONES INTEGRALES EN PUBLICIDAD EXTERIOR, IMPULSANDO EL POSICIONAMIENTO Y LA VISIBILIDAD DE SU MARCA TAL COMO USTED LO REQUIERE.</p>
+        </div>
     </section>
 
     <footer id="contacto">
         <div class="contacto-info">
             <h3>Contáctanos</h3>
             <p><strong>Teléfono:</strong> (442) 3912959</p>
-            <p><strong>Celular:</strong> (442) 1698760</p>
+            <p><strong>Celular:</strong> (442) 3912959</p>
             <p><strong>Email:</strong> <a href="mailto:javier.axl@hotmail.com">javier.axl@hotmail.com</a></p>
             <p><strong>Síguenos:</strong> <a href="https://www.facebook.com/JAXLPublicidad" target="_blank">f JAXL Publicidad</a></p>
         </div>

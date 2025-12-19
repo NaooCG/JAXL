@@ -317,3 +317,118 @@ nav ul li a {
 nav ul li a:hover {
     color: #8cceff;
 }
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .menu-content {
+        position: relative;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2D4796;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #47cbff;
+    }
+
+    .menu-toggle:checked ~ nav ul {
+        max-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero {
+        padding: 50px 5%;
+    }
+
+    section {
+        padding: 40px 5%;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .servicios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .servicio-card {
+        height: auto;
+        min-height: 250px;
+    }
+
+    .card-front, .card-back {
+        padding: 20px;
+    }
+
+    .about-text {
+        font-size: 0.9em;
+    }
+
+    footer {
+        padding: 20px 5%;
+    }
+
+    .contacto-info p {
+        font-size: 0.9em;
+    }
+
+    .anuncios-title {
+        font-size: 3rem;
+    }
+
+    .anuncios-subtitle {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .anuncios-subtitle span {
+        font-size: 1.2rem;
+    }
+}

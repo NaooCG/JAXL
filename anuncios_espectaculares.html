@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAXL Publicidad - Anuncios Espectaculares</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ========================================= */
-        /* ESTILOS GLOBALES Y BÁSICOS */
-        /* ========================================= */
+       
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,40 +24,60 @@
         a {
             text-decoration: none;
             color: #007bff;
-            text-align: center;
         }
 
-        section {
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        /* --- NAVEGACIÓN (HEADER) --- */
-        .menu-wave-fiel {
+        /* NAVEGACIÓN (ESTILO WAVE + BURGER IDÉNTICO AL INDEX) */
+        .menu-wave {
             position: sticky;
             top: 0;
-            z-index: 100;
-            height: 70px;
-            background: #2D4796;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 130px;
+            background: 
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%232d4796' d='M0,40 C240,80 480,0 720,20 960,40 1200,80 1440,30 L1440,0 L0,0 Z'/></svg>") no-repeat bottom,
+                linear-gradient(180deg, #1a3987, #2D4796);
+            background-size: cover;
         }
 
         .menu-content {
-            height: 70px;
+            height: 130px;
             padding: 0 3%;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
+        /* Logo + Texto en el Menú */
         .logo {
             font-size: 1.6em;
             font-weight: 700;
             color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .logo span {
-            color: #8cceff;
+        .logo img {
+            height: 80px; 
+            width: auto;
+        }
+
+        .logo span { color: #47cbff; }
+
+        /* Lógica de Menú Móvil */
+        .menu-toggle { display: none; }
+        
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
         }
 
         nav ul {
@@ -66,9 +85,7 @@
             display: flex;
         }
 
-        nav ul li {
-            margin-left: 28px;
-        }
+        nav ul li { margin-left: 28px; }
 
         nav ul li a {
             color: white;
@@ -76,43 +93,32 @@
             transition: color 0.3s;
         }
 
-        /* --- CONTENIDO PRINCIPAL (TWO-COLUMNS LAYOUT) --- */
-        
+        /* CONTENIDO PRINCIPAL */
         .contenido-pagina-fiel {
             background-color: #f4f4f4;
             padding-top: 50px;
             padding-bottom: 50px;
-            min-height: calc(100vh - 70px - 200px); 
         }
 
-        /* Contenedor de las dos columnas */
         .contenedor-dos-columnas {
-            max-width: 1200px; /* Ancho máximo para el contenido centrado */
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 0 auto 80px auto; 
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-            gap: 40px; /* Espacio entre columnas */
-            align-items: start; /* Alinear arriba el contenido de las columnas */
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center; 
             text-align: left;
             padding: 0 20px;
         }
 
-        /* Columna de la Izquierda (Para la Imagen) */
-        .columna-izquierda {
-            padding-top: 50px; /* Un poco de padding para alinear con el texto */
-        }
-        
-        .columna-izquierda img {
-            max-width: 100%;
+        .columna-imagen img {
+            width: 100%;
             height: auto;
-            border-radius: 8px; /* Opcional: para un mejor look */
+            border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: block;
         }
 
-        
-        
-
-        
         .card-fiel-imagen {
             text-align: left;
             padding: 30px 40px;
@@ -123,20 +129,16 @@
 
         .card-fiel-imagen h3 {
             color: #2D4796;
-            margin-bottom: 25px;
             font-size: 1.8em;
-            font-weight: 600;
-            text-align: left;
-        }
-
-        .card-fiel-imagen p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+            display: inline-block;
         }
 
         .lista-servicios-fiel {
             list-style-type: none;
             padding-left: 0;
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
 
         .lista-servicios-fiel li {
@@ -145,18 +147,13 @@
             margin-bottom: 15px;
         }
 
-        /* Icono SVG de palomita */
         .lista-servicios-fiel li::before {
             content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
             margin-right: 15px;
             flex-shrink: 0;
         }
-
-        .lista-servicios-fiel li p {
-            margin: 0;
-        }
         
-        /* --- PIE DE PÁGINA (Footer) --- */
+        /* PIE DE PÁGINA (MANTENIDO) */
         footer {
             background-color: #2D4796;
             color: white;
@@ -164,45 +161,66 @@
             text-align: center;
         }
 
-        .contacto-info {
-            margin-bottom: 20px;
-        }
-
-        .contacto-info h3 {
-            margin-bottom: 15px;
-            color: #007bff;
-        }
-
-        .contacto-info p a {
-            color: #8cceff;
-        }
-
-        .copyright {
-            font-size: 0.9em;
-            color: #ccc;
-        }
+        .contacto-info h3 { color: #59baff; margin-bottom: 15px; }
+        .contacto-info p a { color: #8cceff; }
+        .copyright { font-size: 0.9em; color: #ccc; margin-top: 20px; }
         
-        /* --- MEDIA QUERY para Móviles --- */
+        
         @media (max-width: 768px) {
+            .menu-icon { display: flex; }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #2D4796;
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li a { padding: 20px; display: block; }
+
+            .menu-toggle:checked ~ nav ul { max-height: 400px; }
+
+            .logo { font-size: 1.2em; }
+            .logo img { height: 45px; }
+
             .contenedor-dos-columnas {
-                grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 10px;
             }
-            .columna-izquierda {
-                padding-top: 0; /* Eliminar padding extra en móviles */
-                order: 2; /* Opcional: Mover la imagen debajo del texto en móviles */
-            }
-            .columna-derecha {
-                order: 1; /* Mover el texto arriba en móviles */
-            }
+
+            .columna-texto { order: 1; }
+            .columna-imagen { order: 2; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="menu-wave-fiel">
+    <header class="menu-wave">
         <div class="menu-content">
-            <div class="logo">JAXL <span>PUBLICIDAD</span></div>
+            <div class="logo">
+                <img src="jaxl.png" alt="Logo"> 
+                JAXL <span>PUBLICIDAD</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
             <nav>
                 <ul>
                     <li><a href="index.html#inicio">Inicio</a></li>
@@ -217,37 +235,75 @@
     <section id="detalles" class="contenido-pagina-fiel">
         
         <div class="contenedor-dos-columnas">
-            
-            <div class="columna-izquierda">
-                <img src="anuncio1.png" alt="Imagen de un anuncio espectacular de JAXL Publicidad">
-                </div>
-            
-            <div class="columna-derecha">
+            <div class="columna-imagen">
+                <img src="anuncio1.png" alt="Anuncio Espectacular JAXL">
+            </div>
+            <div class="columna-texto">
                 <div class="card-fiel-imagen">
-                    
                     <h3>Anuncios Espectaculares</h3>
-                    
-                    <p>****</p>
-                    
+                    <p>Potencia la visibilidad de tu marca con nuestras ubicaciones estratégicas.</p>
                     <p>Nuestro servicio incluye:</p>
-                    
                     <ul class="lista-servicios-fiel">
-                        <li>
-                            <p><strong>Renta de Espacios:</strong></p>
-                        </li>
-                        <li>
-                            <p><strong>Impresión de Alta Calidad:</strong> </p>
-                        </li>
-                        <li>
-                            <p><strong>Instalación Profesional:</strong> </p>
-                        </li>
-                        
+                        <li><p><strong>Renta de Espacios:</strong> Ubicaciones de alto tráfico.</p></li>
+                        <li><p><strong>Impresión de Alta Calidad:</strong> Resolución garantizada.</p></li>
+                        <li><p><strong>Instalación Profesional:</strong> Seguridad en cada montaje.</p></li>
                     </ul>
-
-                    <p>***</p>
                 </div>
             </div>
-            
+        </div>
+
+        <div class="contenedor-dos-columnas">
+            <div class="columna-texto">
+                <div class="card-fiel-imagen">
+                    <h3>Rebases 3D en Anuncios Espectaculares</h3>
+                    <p>Creamos elementos volumétricos que sobresalen de tu anuncio para un impacto visual inigualable.</p>
+                    <p>Servicios incluidos:</p>
+                    <ul class="lista-servicios-fiel">
+                        <li><p><strong>Fabricación:</strong> Diseño y creación de elementos 3D a medida.</p></li>
+                        <li><p><strong>Impresión:</strong> Calidad fotográfica en todos los materiales.</p></li>
+                        <li><p><strong>Instalación:</strong> Montaje seguro de los elementos volumétricos en la estructura.</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-imagen">
+                <img src="rebasesD3.png" alt="Ejemplos de Rebases 3D en Anuncios Espectaculares JAXL">
+            </div>
+        </div>
+
+        <div class="contenedor-dos-columnas">
+            <div class="columna-imagen">
+                <img src="fabricacion_anuncions.png" alt="Fabricación de Estructuras JAXL">
+            </div>
+            <div class="columna-texto">
+                <div class="card-fiel-imagen">
+                    <h3>Fabricación de Estructuras</h3>
+                    <p>Diseñamos y fabricamos estructuras metálicas a medida para cualquier necesidad publicitaria.</p>
+                    <p>Contamos con:</p>
+                    <ul class="lista-servicios-fiel">
+                        <li><p><strong>Soldadura Especializada:</strong> Máxima resistencia y durabilidad.</p></li>
+                        <li><p><strong>Personal Calificado:</strong> Expertos en armado de tableros y estructuras.</p></li>
+                        <li><p><strong>Montaje con Grúa:</strong> Colocación precisa en cualquier terreno.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-dos-columnas">
+            <div class="columna-texto">
+                <div class="card-fiel-imagen">
+                    <h3>Mantenimiento Profesional</h3>
+                    <p>Aseguramos la integridad y estética de tus anuncios con servicios especializados de restauración.</p>
+                    <p>Nuestra labor incluye:</p>
+                    <ul class="lista-servicios-fiel">
+                        <li><p><strong>Restauración Estructural:</strong> Eliminación de óxido y corrosión en postes.</p></li>
+                        <li><p><strong>Pintura y Acabados:</strong> Aplicación de recubrimientos de alta durabilidad.</p></li>
+                        <li><p><strong>Trabajo en Altura:</strong> Personal equipado con canastillas y equipo de seguridad.</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-imagen">
+                <img src="mantinieminto_anuncios.png" alt="Mantenimiento de Anuncios Espectaculares JAXL">
+            </div>
         </div>
         
     </section>
