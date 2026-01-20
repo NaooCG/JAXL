@@ -180,35 +180,49 @@
 
         /* NOSOTROS */
         #nosotros {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-align: center;
-        }
+    min-height: 600px;
+    padding: 100px 10%;
+    /* Ruta de la imagen que descargaste */
+    background: linear-gradient(rgba(45, 71, 150, 0.50), rgba(0, 0, 0, 0.50)),
+                url('MINIATURAS.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Efecto Parallax elegante */
+    display: flex;
+    flex-direction: row; /* Logo a la izquierda, texto a la derecha */
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    color: white;
+}
 
-        .nosotros-logo img {
-            width: 600px;
-            height: auto;
-        }
+.nosotros-logo img {
+    width: 350px; /* Tamaño ajustado para balance */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+}
 
-        .about-text {
-            max-width: 900px;
-            margin: 0 auto;
-            font-family: 'Times New Roman', Times, serif; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;       
-            line-height: 1.8;         
-            color: #444;               
-            text-align: center;
-        }
+.about-text {
+    max-width: 750px;
+    text-align: center;
+}
 
-        .about-text p {
-            margin-bottom: 40px;       
-            font-size: 1.05em;
-        }
+.about-text h2 {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif; /* Para el toque elegante */
+    text-transform: none;
+}
+
+.about-text p {
+    font-family: 'Playfair Display', serif; /* Fuente serif como en tu imagen */
+    font-size: 1.1rem;
+    line-height: 2;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+}
 
         footer {
             background-color: #2D4796;
