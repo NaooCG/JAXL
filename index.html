@@ -104,6 +104,17 @@
             transform: rotateY(0deg);
         }
 
+        #card-espectaculares {
+            /* Se añade un degradado lineal para que el texto blanco se lea bien */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('espectacular_tarjeta.jpg');
+            color: white;
+        }
+
+        #card-espectaculares .tip-didactico {
+            color: white;
+            border-color: white;
+        }
+
         .card-back {
             background-color: #007bff;
             color: white;
@@ -332,7 +343,7 @@
         <div class="servicios-grid">
             
             <a href="anuncios_espectaculares.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-espectaculares">
                     <h3>Anuncios Espectaculares</h3>
                     <p>Renta, impresión e instalación en ubicaciones clave.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
