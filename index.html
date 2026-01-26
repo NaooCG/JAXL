@@ -90,6 +90,8 @@
             transition: transform 0.6s;
             border-radius: 10px;
             padding: 25px;
+            /* Padding inferior extra para que el texto no choque con el botón */
+            padding-bottom: 50px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -102,23 +104,72 @@
             background-color: #fff;
             color: #333;
             transform: rotateY(0deg);
+            background-position: center;
+            background-size: cover;
         }
 
-        #card-espectaculares {
-            /* Se añade un degradado lineal para que el texto blanco se lea bien */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('espectacular_tarjeta.jpg');
+        /* --- INICIO DE PERSONALIZACIÓN DE TARJETAS --- */
+
+        #card-espectaculares, 
+        #card-pantallas, 
+        #card-vallas, 
+        #card-estructuras, 
+        #card-tapiales, 
+        #card-letras3d {
             color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
-        #card-espectaculares .tip-didactico {
+        /* Estilos para el botón "MIRA DENTRO" en todas las tarjetas con fondo */
+        #card-espectaculares .tip-didactico,
+        #card-pantallas .tip-didactico,
+        #card-vallas .tip-didactico,
+        #card-estructuras .tip-didactico,
+        #card-tapiales .tip-didactico,
+        #card-letras3d .tip-didactico {
             color: white;
             border-color: white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
+
+        /* 1. Anuncios Espectaculares */
+        #card-espectaculares {
+            background-image: url('epectacular_tarjeta.png');
+        }
+
+        /* 2. Pantallas Digitales */
+        #card-pantallas {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('pantalla_D_Tarjeta.png');
+        }
+
+        /* 3. Vallas Móviles */
+        #card-vallas {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('vallas_M_Tarjeta.png');
+        }
+
+        /* 4. Fabricación de Estructuras */
+        #card-estructuras {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('fabri_Estr_Trajeta.png');
+        }
+
+        /* 5. Tapiales Publicitarios */
+        #card-tapiales {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('tapi_Tarjeta.png');
+        }
+
+        /* 6. Letras 3D */
+        #card-letras3d {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('3D_Tarjeta.png');
+        }
+
+        /* --- FIN DE PERSONALIZACIÓN DE TARJETAS --- */
+
 
         .card-back {
             background-color: #007bff;
             color: white;
             transform: rotateY(180deg); 
+            padding-bottom: 25px; /* Restaurar padding normal para la parte de atrás */
         }
 
         .servicio-card:hover .card-front {
@@ -129,15 +180,23 @@
             transform: rotateY(0deg);
         }
 
+        /* ESTILO MODIFICADO PARA BAJAR EL TEXTO */
         .tip-didactico {
             display: block;
-            margin-top: 15px;
+            
+            /* Posicionamiento absoluto para pegarlo abajo */
+            position: absolute;
+            bottom: 20px; /* Distancia desde abajo */
+            left: 50%;
+            transform: translateX(-50%); /* Centrado horizontal exacto */
+            
             font-size: 0.8em;
             font-weight: 700;
             color: #007bff;
             border: 1px solid #007bff;
             padding: 5px 10px;
             border-radius: 20px;
+            white-space: nowrap; /* Evita que el texto se parta en dos líneas */
         }
 
         /* NAVEGACIÓN */
@@ -160,7 +219,6 @@
             justify-content: space-between;
         }
 
-        /* Logo + Texto en el Menú */
         .logo {
             font-size: 1.6em;
             font-weight: 700;
@@ -191,49 +249,48 @@
 
         /* NOSOTROS */
         #nosotros {
-    min-height: 600px;
-    padding: 100px 10%;
-    /* Ruta de la imagen que descargaste */
-    background: linear-gradient(rgba(45, 71, 150, 0.50), rgba(0, 0, 0, 0.50)),
-                url('MINIATURAS.png') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed; /* Efecto Parallax elegante */
-    display: flex;
-    flex-direction: row; /* Logo a la izquierda, texto a la derecha */
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    color: white;
-}
+            min-height: 600px;
+            padding: 100px 10%;
+            background: linear-gradient(rgba(45, 71, 150, 0.50), rgba(0, 0, 0, 0.50)),
+                        url('MINIATURAS.png') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            color: white;
+        }
 
-.nosotros-logo img {
-    width: 350px; /* Tamaño ajustado para balance */
-    height: auto;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
-}
+        .nosotros-logo img {
+            width: 350px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+        }
 
-.about-text {
-    max-width: 750px;
-    text-align: center;
-}
+        .about-text {
+            max-width: 750px;
+            text-align: center;
+        }
 
-.about-text h2 {
-    color: #ffffff;
-    font-size: 3rem;
-    margin-bottom: 30px;
-    font-family: 'Playfair Display', serif; /* Para el toque elegante */
-    text-transform: none;
-}
+        .about-text h2 {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            text-transform: none;
+        }
 
-.about-text p {
-    font-family: 'Playfair Display', serif; /* Fuente serif como en tu imagen */
-    font-size: 1.1rem;
-    line-height: 2;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: #f0f0f0;
-    margin-bottom: 30px;
-}
+        .about-text p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+        }
 
         footer {
             background-color: #2D4796;
@@ -344,8 +401,7 @@
             
             <a href="anuncios_espectaculares.html" class="servicio-card">
                 <div class="card-front" id="card-espectaculares">
-                    <h3>Anuncios Espectaculares</h3>
-                    <p>Renta, impresión e instalación en ubicaciones clave.</p>
+                    
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
@@ -354,7 +410,7 @@
             </a>
 
             <a href="pantallas_digitales.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-pantallas">
                     <h3>Pantallas Digitales</h3>
                     <p>Spots de 10 segundos en avenidas principales de Querétaro.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
@@ -365,7 +421,7 @@
             </a>
 
             <a href="vallas_moviles.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-vallas">
                     <h3>Vallas Móviles</h3>
                     <p>Llegue al público con recorridos segmentados.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
@@ -376,9 +432,9 @@
             </a>
 
             <a href="fabricacion_estructuras.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-estructuras">
                     <h3>Fabricación de Estructuras</h3>
-                    <p>Unipolares, Tótemes, Carteleras y Estructuras Metálicas.</p>
+                    <p>Unipolares, Tótemes, Bastidores, Carteleras y Estructuras Metálicas.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
                 </div>
                 <div class="card-back">
@@ -387,7 +443,7 @@
             </a>
 
             <a href="tapiales.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-tapiales">
                     <h3>Tapiales Publicitarios</h3>
                     <p>Soluciones para cercado de obras con impacto visual.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
@@ -398,7 +454,7 @@
             </a>
 
             <a href="3d_luminosos_impresiones.html" class="servicio-card">
-                <div class="card-front">
+                <div class="card-front" id="card-letras3d">
                     <h3>Letras 3D, Cajones Luminosos e Impresiones</h3>
                     <p>Realce su marca con anuncios 3D, iluminación LED e impresiones de alta calidad.</p>
                     <span class="tip-didactico">¡MIRA DENTRO!</span>
